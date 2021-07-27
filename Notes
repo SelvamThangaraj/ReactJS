@@ -1,0 +1,144 @@
+FrontEnd - HTML,CSS,JS - UI
+
+HTML - Structure
+CSS - Presentation
+JS - Action
+
+Plain JS - Forms Validation
+
+FrontEnd Prefer - Library or Framework
+
+jquery
+
+Angular - Framework - ServerSide  - Google
+React JS - Library - Performance - Fast - Facebook
+Vue JS
+Ext JS
+
+
+Java - Spring Framework - Database
+DotNet
+
+FrontEnd(ReactJS) + Backend(Spring) = Full Stack Development
+
+
+JS - ES6
+
+What is function
+Buiding Objects
+Array
+objects
+
+Setting up Environment
+
+online playground
+
+index.html - deploy the server
+CDN - Resource
+
+NodeJS - NPM
+
+Java - Maven- POM.xml - add dependencies or gradle
+
+Step-1 Install Node JS and NPM
+node -v
+npm -v
+
+
+Step-2 Create the Project
+
+npm
+
+basic server
+
+
+Node JS - Runtime Environment
+
+Javascript - Client Side Script
+
+ServerSide - java,dotnet,python,php
+
+
+
+React JS ---> REST-API-JSON-DotNET -Database
+
+MERN - Stack - MongoDB,Express,ReactJS,NodeJS
+
+
+node js - create the project
+npm init - create the node js project
+
+Express JS for Serveing React apps
+
+Server - Physical - VPS or Cloud
+
+Apache Tomcat -> Java
+
+
+React Support JSX
+
+
+HTML
+
+index.html
+style.css
+script.js
+
+JSX doesn't support' browsers
+
+browsers knows only JS
+
+JSX ---> Babel Compiler - JS - browser render
+
+mixed(html + js)
+
+
+development server
+babel
+jsx -> js 
+react
+style
+
+react-script - development simplyfication
+
+
+react
+react dom
+
+react application by default liveserver
+
+once create the project
+
+Assignment
+
+delete node_models
+
+npm install
+
+
+React JS - Single Page Application - SPA
+
+Cinema Screen - Video running
+
+One page - render page
+
+Login - username and password -> Dashboard
+
+Component
+
+
+Components creation two types
+1.Function Based - Simple logic like form,button
+2.Class based - OOPS - Encapsulation,constructor,methods
+Complex logic - Fetching data from serverside
+
+React Hooks - React 16.x
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App /> What Component render
+  </React.StrictMode>,
+  document.getElementById('root') - where
+);
+
+Components are parent and child releationship
