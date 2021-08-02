@@ -46,24 +46,16 @@ const EmployeeComponent = () => {
                 <p>
                     <label htmlFor="Id">Employee ID </label>
                     <input
-                        id="Id"
                         name="Id"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.Id}
-						//onBlur will call the formik validation, once out of focus from element
+                        {...formik.getFieldProps("Id")}
                     />
                 </p>
 
                 <p>
                     <label htmlFor="Name">Employee Name </label>
-                    <input
-                        id="Name"
+                    <input                        
                         name="Name"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.Name}
-                        onBlur={formik.handleBlur}
+                        {...formik.getFieldProps("Name")}
                     />
                     {formik.touched.Name && formik.errors.Name ?
                      <span style={{color:'red'}}>
@@ -75,10 +67,7 @@ const EmployeeComponent = () => {
                     <input
                         id="Location"
                         name="Location"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.Location}
-                        onBlur={formik.handleBlur}
+                        {...formik.getFieldProps("Location")}
                     />
                     {formik.touched.Location && formik.errors.Location ?
                      <span style={{color:'red'}}>
@@ -87,23 +76,16 @@ const EmployeeComponent = () => {
                 </p>
                 <p>
                     <label htmlFor="Salary">Employee Salary </label>
-                    <input
-                        id="Salary"
+                    <input                        
                         name="Salary"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.Salary}
+                        {...formik.getFieldProps("Salary")}
                     />
                 </p>
                 <p>
                     <label htmlFor="EmailId"> Email Id </label>
                     <input 
-                        id="EmailId"
                         name="EmailId"
-                        type="text"
-                        onChange={formik.handleChange}
-                        value={formik.values.EmailId}
-                        onBlur={formik.handleBlur}
+                        {...formik.getFieldProps("EmailId")}
                     />
                     {formik.touched.EmailId && formik.errors.EmailId ?
                      <span style={{color:'red'}}>
