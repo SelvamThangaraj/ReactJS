@@ -1,0 +1,6 @@
+npm install -g json-server
+
+To start the server:
+    json-server --watch db.json --port 3004
+
+db.json => Have json sample data
