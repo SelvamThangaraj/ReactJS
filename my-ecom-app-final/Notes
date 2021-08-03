@@ -1,0 +1,20 @@
+Simple Ecom -> Communicating - Express JS RestAPI
+
+- Redux - State Management Library
+
+
+Step-1 Create the React Project
+
+Step-2 Install  npm install react-bootstrap
+
+Step-3 
+
+{/* The following line can be included in your src/index.js or App.js file*/}
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+http://localhost:3000/product/4
+
+
+React JS ---> 
+ --> ServerSide(ExpressJS or Java or Dot)--> Database

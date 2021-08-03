@@ -1,0 +1,206 @@
+Redux
+   state management library based on flux design pattern
+		flux - developed by facebook
+   Action - Dispatcher - store (Reducer and state)- view
+   Virtually create Store
+
+//install in your application
+   redux
+   redux-devtools-extension  
+   react-redux
+   redux-thunk   //to communcate with serverside
+   
+//install in chrome
+   redux-devtools-extension
+   
+//https://redux.js.org/introduction/getting-started
+//https://redux.js.org/introduction/examples
+
+1. create Store
+      Store manages reducer and state
+	
+	create store.js under src folder
+		src/store.js
+		
+2. store.js
+	import {createStore,combineReducers,applyMiddleware} from 'redux'
+	import thunk from 'redux-thunk'                                   //thunk is main library, so not used {}
+	import {composeWithDevTools} from 'redux-devtoos-extendsion'
+	import {productListReducer} from './reducers/productReducers'     
+	
+	const reducer = combineReducers({
+		productlist: productListReducer,
+	})
+	
+	const initialState= {}
+	
+	const middleware=[thunk]
+	
+	const store=createStore(
+	              reducer,
+				  initialState,
+				  composeWithDevTools(
+					applyMiddleware(...middleware)
+				  )
+				 );
+	
+	export default store
+	
+3. src/constants   //new folder constants
+   src/constants/productConstants.js
+   
+   //whatever actions performed like product list request, add cart, delete cart
+   
+   productConstants.js  //operations we are going to perform
+   
+   export const PRODUCT_LIST_REQUEST='PRODUCT_LIST_REQUEST'
+   export const PRODUCT_LIST_SUCCESS='PRODUCT_LIST_SUCCESS'
+   export const PRODUCT_LIST_FAIL='PRODUCT_LIST_FAIL'
+   
+   
+   
+   
+ 4. src/reducers  //new folder
+    src/reducers/productReducers.js   //Handling different actions
+	
+	import {PRODUCT_LIST_REQUEST,
+			PRODUCT_LIST_SUCCESS,
+			PRODUCT_LIST_FAIL,
+	       } from '../constants/productConstants'
+	   
+	export const productListReducer =(state={products:[]},action) =>{
+		switch(action.type){
+			case PRODUCT_LIST_REQUEST :
+			   return {loading:true, products:[]}			 
+			 
+			 case PRODUCT_LIST_SUCCESS :
+			    return {loading:false, products:action.payload}
+				
+			case PRODUCT_LIST_FAIL :
+			    return {loading:false, error:action.payload}
+				
+			default:
+				return state
+		
+		}	
+	}
+	
+	//refer part-2 state action reducer website
+	
+5. src/actions   //new folder
+   src/actions/productActions.js
+
+	import axios from 'axios'
+	
+	//3 TYPES OF ACTIONS
+	import {PRODUCT_LIST_REQUEST,
+			PRODUCT_LIST_SUCCESS,
+			PRODUCT_LIST_FAIL,
+	       } from '../constants/productConstants'
+		   
+	export const listProducts =() => async (dispatch) => {
+		try{
+			dispatch({type:PRODUCT_LIST_REQUEST})
+			const {data} =await axios.get('/api/products/')
+			
+			dispatch({
+			       type:PRODUCT_LIST_SUCCESS
+				   payload:data,
+				)}
+		
+		} catch(error){
+			dispatch({
+				type:PRODUCT_LIST_FAIL,
+				payload:
+					error.response && error.response.data.message 
+					? error.response.data.message
+					:error.message
+			 })
+		
+		}
+	}
+		   
+	
+ //chrome - redux dev tools
+ R -> redux-dev-tools
+    Action   State  
+
+6. index.js
+		import store from './store'   //store is the redux starting point
+		
+		import {Provider} from 'react-redux'   //connect b/w react and redux
+		
+		<Provider>
+			<App />
+		<Provider>
+		
+7. HomeScreen.js
+
+	comment //useEffect(())
+	import {useDispatch,useSelector} from 'react-redux'
+	import {listProducts} from '../actions/productActions'
+	
+	const dispatch = useDispatch()
+	const productlist= useSelector((state)=> state.productlist)
+	const {loading,error,products} = productlist     //destructering
+	
+	useEffect(()=>{
+		dispatch(listProducts())
+	},[])
+	
+	return(
+	     <div>
+		   <h1>Latest products </h1>
+		   {loading ?(
+				<h2> Loading...</h2>
+			):error ? (
+			
+			)
+			
+			}
+	
+	)
+	
+Assignment
+  //cart using redux functionality
+  
+  1. cartConstants.js
+		//src/constants/addCart.js
+	export const CART_ADD_ITEM = 'CART_ADD_ITEM'
+	export const CART_REMOVE_ITEM='CART_REMOVE_ITEM'
+	
+  2. reducers/cartReducers.js
+		import {
+			CART_ADD_ITEM,
+			CART_REMOVE_ITEM
+		} from '../constants/cartConstents'
+		
+		//state,action
+		export const cartReducer=(state={cartItems:[]},action) => {
+		
+		} 
+		
+3. store.js
+   const reducer= combineReducers({
+		cart:cartReducer
+   })
+	 
+	 
+4. actions/cartActions.js
+	
+		//actions and components are integrated
+		// server side communiations, fetching the product details
+		
+5. component/cartComponent.js
+		
+
+
+		
+  
+	
+		
+   
+
+   
+	
+
