@@ -1,6 +1,6 @@
 npm install -g json-server
 
-To start the server:
+To start the server (Open cmd as "Run as Admin" mode):
     json-server --watch db.json --port 3004
 
 db.json => Have json sample data

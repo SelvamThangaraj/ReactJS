@@ -1,0 +1,85 @@
+//https://expressjs.com/en/starter/installing.html
+1. create backend folder under the project
+2. ..\backend> npm init
+	   Package name: restapiecom
+	   description: REST API for Backend
+	   entry Point: server.js
+	   
+3. package.json is created under backend folder
+4. ..\backend> npm install express --save
+5. create new folder data under backend folder
+6. copy products.js under data folder
+7. In server.js
+   //https://expressjs.com/en/starter/hello-world.html
+	const express = require('express')
+	const app = express()
+	const port = 3000
+
+	app.get('/', (req, res) => {
+	  res.send('Hello World!')
+	})
+
+	app.listen(port, () => {
+	  console.log(`Example app listening at http://localhost:${port}`)
+	})
+8. Update the below server.js
+   const port = 5000
+   const products=require('./data/products')   //require is like import
+   
+   app.get('/api/products', (req, res) => {
+	  res.json(products)
+	})
+	
+	app.get('/api/products', (req, res) => {
+	  res.json(products)
+	})
+	
+	app.get('/api/products/ :id', (req, res) => {
+	const product = products.find((p)=>)
+	  res.json(product)
+	})
+	
+	//in browser, try below
+	localhost:5000/api/products
+	localhost:5000/api/products/1
+   
+9. update products.js as below
+		//export default products
+		module.exports = products
+		
+10. nodemon //automaticaly reload, when node application modifies
+   ..\my-ecom-app> npm install -g nodemon
+   
+   ..\backend> nodemon ./server.js
+   
+11. Install axios in my-ecom-app, to call the serverside
+    ..\my-ecom-app> node i axios -save
+	
+12. my-ecom-app\package.json
+	"proxy":"http://127.0.0.1:5000"
+
+13. HomeScreen.js
+		//import products from '../products'
+		import {useState,useEffect} from 'react'
+		import axios from 'axios'
+		
+		const HomeScreen =() =>{
+			const[products,setProducts]=useState([])
+			
+			useEffect(()=>{
+				const fetchProducts=async() =>{
+					const {data} =await axios.get('/api/products/')
+					setProducts(data)				
+				}
+				fetchProducts()
+			},[])
+		
+		}
+		
+14. Restart my-ecom-app , if any error
+15. Change some product name in server side and verify the same is reflect in client
+ 
+
+
+
+   
