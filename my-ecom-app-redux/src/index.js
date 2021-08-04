@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import store from './store'
 import {Provider} from 'react-redux'
 ReactDOM.render(
+  //to hook up Redux to React, Provider is used
+  //pass the store property
+  //All child component of App will use this store
     <Provider store={store}>
        <App />
     </Provider>,

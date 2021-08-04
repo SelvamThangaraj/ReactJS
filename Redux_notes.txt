@@ -101,7 +101,8 @@ Redux
 	export const listProducts =() => async (dispatch) => {
 		try{
 			dispatch({type:PRODUCT_LIST_REQUEST})
-			const {data} =await axios.get('/api/products/')
+			const {data} =await axios.get('/api/products/')     //package.json -> "name": "my-ecom-app",
+																//				"proxy": "http://127.0.0.1:5000",
 			
 			dispatch({
 			       type:PRODUCT_LIST_SUCCESS
@@ -130,9 +131,12 @@ Redux
 		
 		import {Provider} from 'react-redux'   //connect b/w react and redux
 		
-		<Provider>
+		//to hook up Redux to React, Provider is used
+        //pass the store property 
+		//All child component of App will use this store
+		<Provider store={store}>
 			<App />
-		<Provider>
+		</Provider>,
 		
 7. HomeScreen.js
 
@@ -140,6 +144,7 @@ Redux
 	import {useDispatch,useSelector} from 'react-redux'
 	import {listProducts} from '../actions/productActions'
 	
+	//A hook to access the redux dispatch function.
 	const dispatch = useDispatch()
 	const productlist= useSelector((state)=> state.productlist)
 	const {loading,error,products} = productlist     //destructering
@@ -150,16 +155,29 @@ Redux
 	
 	return(
 	     <div>
-		   <h1>Latest products </h1>
-		   {loading ?(
-				<h2> Loading...</h2>
-			):error ? (
-			
-			)
-			
-			}
+		   <h1>Latest Products</h1>
+            {
+            loading ?(
+                <h2>Loading...</h2>
+            ):error ? (
+                <h3>{error}</h3>
+            ):(
+            <Row>
+                {products.map((product) => (
+                    <Col key={product._id} sm={12} md={6} lg={4} x={3}>
+                    <Product product = {product}/>
+                    </Col>
+                ))}
+            </Row>
+             )}
+		</div>
 	
 	)
+	
+//Destructuring in react, sample below
+let object = { one: 1, two: 2, three: 3 }
+let { one, two, three } = object;
+console.log(one, two, three) // prints 1, 2, 3
 	
 Assignment
   //cart using redux functionality

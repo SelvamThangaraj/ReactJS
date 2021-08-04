@@ -19,14 +19,16 @@ const HomeScreen = () => {
             fetchProducts()
         },[]) */
 
+        //useDispatch - A hook to access the redux dispatch function.
         const dispatch = useDispatch()
+        //useSelector - A hook to access the redux store's state.
         const productlist = useSelector((state)=> state.productlist)
+        //Destructuring: see example below
         const {loading,error,products} = productlist
+        //listProducts() - connect to Actions -  ProjectActions
         useEffect(() =>{
             dispatch(listProducts())
         },[])
-
-
 
     return (
         <div>
@@ -50,3 +52,8 @@ const HomeScreen = () => {
 }
 
 export default HomeScreen
+
+//Destructuring in react, sample below
+// let object = { one: 1, two: 2, three: 3 }
+// let { one, two, three } = object;
+// console.log(one, two, three) // prints 1, 2, 3
